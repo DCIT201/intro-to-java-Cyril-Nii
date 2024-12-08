@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class TemperatureConverter {
@@ -9,7 +8,6 @@ public class TemperatureConverter {
         System.out.println("***TEMPERATURE CONVERTER***");
 
         int choice;
-
 
         // Display the menu and loop until the user enters a valid choice
         do {
@@ -29,17 +27,25 @@ public class TemperatureConverter {
             case 1:
                 System.out.print("Enter temperature in Celsius: ");
                 double celsiusInput = scanner.nextDouble();
-                double fahrenheitOutput = (celsiusInput * 9/5) + 32;
-                System.out.println("Temperature in Fahrenheit: " + fahrenheitOutput);
+                if (celsiusInput < -273.15) {
+                    System.out.println("Temperature below absolute zero is not possible.");
+                } else {
+                    double fahrenheitOutput = (celsiusInput * 9/5) + 32;
+                    System.out.println("Temperature in Fahrenheit: " + fahrenheitOutput);
+                }
                 break;
 
             case 2:
                 System.out.print("Enter temperature in Fahrenheit: ");
                 double fahrenheitInput = scanner.nextDouble();
-                double celsiusOutput = (fahrenheitInput - 32) * 5/9;
-                System.out.println("Temperature in Celsius: " + celsiusOutput);
+                if (fahrenheitInput < -459.67) {
+                    System.out.println("Temperature below absolute zero is not possible.");
+                } else {
+                    double celsiusOutput = (fahrenheitInput - 32) * 5/9;
+                    System.out.println("Temperature in Celsius: " + celsiusOutput);
+                }
                 break;
         }
         scanner.close();
     }
-}
+} 
